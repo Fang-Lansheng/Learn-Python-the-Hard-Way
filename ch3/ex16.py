@@ -22,6 +22,8 @@ print('Opening the file...')
 target = open(filename, 'w')
 print('Truncating the file. Goodbye!')
 target.truncate()
+# truncate()方法用于从文件的首行首字符开始截断，无[size]表示从当前位置截断
+# 截断之后后面的所有字符被删除
 
 print("Now I'm going to ask you for three lines.")
 

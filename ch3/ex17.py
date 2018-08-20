@@ -28,6 +28,7 @@ indata = open(from_file).read()
 print("The input file is %d bytes long." % len(indata))
 
 print('Does the output file exists? %r' % exists(to_file))
+# exists()方法判断文件/目录是否存在
 print('Ready, hit RETURN to continue, CTRL-C to abort.')
 input()
 
