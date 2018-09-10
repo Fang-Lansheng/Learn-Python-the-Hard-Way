@@ -216,3 +216,52 @@ http://www.cnblogs.com/wupeiqi/articles/5484747.html
 | 0 == 1 | False |
 | 0 == 0 | True  |
 
+### 关键字
+
+| KEYWORD    | DESCRIPTION                              | EXAMPLE                                 |
+| ---------- | ---------------------------------------- | --------------------------------------- |
+| `and`      | 逻辑与                                   | `True and False == False`               |
+| `as`       | with-as语句的一部分                      | `with X as Y: pass`                     |
+| `assert`   | 声明                                     | `assert False, "Error!"`                |
+| `break`    | 停止整个循环                             | `while True: break`                     |
+| `class`    | 定义一个类                               | `class Person(object)`                  |
+| `continue` | 停止这一次循环，但继续下一次循环         | `while True: continue`                  |
+| `def`      | 定义一个函数                             | `def X(): pass`                         |
+| `del`      | 从字典中删除                             | `def X[Y]`                              |
+| `elif`     | Else if条件                              | `if: X; elif: Y; else: J`               |
+| `else`     | Else条件                                 | `if: X; elif: Y; else: J`               |
+| `except`   | 如果捕获异常，执行该代码块               | `except ValueError, e:print e`          |
+| `exec`     | 将字符串作为Python代码执行               | `exec 'print "hello"'`                  |
+| `finally`  | 不管是否有异常，finally代码块都执行      | `finally: pass`                         |
+| `for`      | for循环                                  | `for X in Y: pass`                      |
+| `from`     | 从某一模块中引入特定部分                 | `import X from Y`                       |
+| `global`   | 定义一个全局变量                         | `global X`                              |
+| `if`       | if条件                                   | `if: X; elif: Y; else: J`               |
+| `import`   | 引入一个模块到当前模块                   | `import os`                             |
+| `in`       | for循环的一部分 / 测试`X in Y`           | `for X in Y: pass` / `1 in [1] == True` |
+| `is`       | 类似`==`，判断相等                       | `1 is 1 == Ture`                        |
+| `lambda`   | 创建一个无名函数                         | `s = lambda y: y ** y; s(3)`            |
+| `not`      | 逻辑非                                   | `not True == False`                     |
+| `or`       | 逻辑或                                   | `Ture or False == True`                 |
+| `pass`     | 该代码块为空                             | `def empty(): pass`                     |
+| `print`    | 打印一个字符串                           | `print('this string')`                  |
+| `raise`    | 代码出错时，抛出一个异常                 | `raise ValueError("No")`                |
+| `return`   | 推出函数并返回一个返回值                 | `def X(): return`                       |
+| `try`      | 尝试代签代码块，有异常则进入except代码块 | `try: pass`                             |
+| `while`    | while循环                                | `while X: pass`                         |
+| `with`     | 一个变量的别名                           | `with X as Y: pass`                     |
+| `yield`    | 暂停，返回给调用者                       | `def X(): yield Y; X().next()`          |
+
+### 数据类型
+
+| TYPE      | DESCRIPTION                 | EXAMPLE                   |
+| --------- | --------------------------- | ------------------------- |
+| `True`    | True 布尔值                 | `True or False == True`   |
+| `False`   | False 布尔值                | `False and True == False` |
+| `None`    | 表示“nothing”或者“no value” | `x = None`                |
+| `strings` | 字符串，储存文本信息        | `x = "hello"`             |
+| `numbers` | 储存整数                    | `i = 100`                 |
+| `floats`  | 储存小数                    | `i = 10.389`              |
+| `lists`   | 储存某种东西的列表          | `j = [1, 2, 3, 4]`        |
+| `dicts`   | 储存某种东西的键值对        | `e = {'x': 1, 'y': 2}`    |
+
