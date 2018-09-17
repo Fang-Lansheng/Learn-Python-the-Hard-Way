@@ -95,6 +95,7 @@ def set(aMap, key, value):  # 即hashmap.set(key, value)
 def delete(aMap, key):
     '''Deletes the given key from the Map.'''
     '> delete 删除一个key：找到key对应的bucket，并将其从列表中删除' \
+
     bucket = get_bucket(aMap, key)
 
     for i in range(len(bucket)):
