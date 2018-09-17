@@ -265,3 +265,9 @@ http://www.cnblogs.com/wupeiqi/articles/5484747.html
 | `lists`   | 储存某种东西的列表          | `j = [1, 2, 3, 4]`        |
 | `dicts`   | 储存某种东西的键值对        | `e = {'x': 1, 'y': 2}`    |
 
+![1537188227609](C:\Users\Thistledown\AppData\Roaming\Typora\typora-user-images\1537188227609.png)
+
+
+
+
+
