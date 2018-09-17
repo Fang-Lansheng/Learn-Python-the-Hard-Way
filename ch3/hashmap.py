@@ -33,7 +33,7 @@ def get_bucket(aMap, key):  # 即hashmap.get_bucket(key)
     bucket_id = hash_key(aMap, key) # bucket_id是一个哈希值，作为键值对的索引
     return aMap[bucket_id]
 
-def get_slot(aMap, key, default=None):  # 即hashmap.get_slot(key, default=None)
+def get_slot(aMap, key, default=None):
     '''
     Returns the index, key, and value of a slot found in a bucket.
     Returns -1, key, and default (None if not set) when not found.
@@ -48,7 +48,7 @@ def get_slot(aMap, key, default=None):  # 即hashmap.get_slot(key, default=None)
 
     return -1, key, default
 
-'同dict.get(key, default=None)，返回指定键的值，如果值不再字典中返回default值'
+'类似于dict.get(key, default=None)，返回指定键的值，如果值不存在则返回default值'
 def get(aMap, key, default=None):
     '''Gets the value in a bucket for the given key, or the default.'''
     i, k, v = get_slot(aMap, key, default=default)
@@ -58,13 +58,15 @@ def set(aMap, key, value):  # 即hashmap.set(key, value)
     '''Sets the key to the value, replacing any existing value.'''
     "给字典aMap赋予一组键值key=>value"
     bucket = get_bucket(aMap, key)
-    i, k, v = get_slot(aMap, key)
+    i, k, v = get_slot(aMap, key)   # i，k，v分别是index，key和value
 
     if i >= 0:
         # the key exists, replace it
+        #
         bucket[i] = (key, value)
     else:
         # the key does not, append to create it
+        # 如果键key不存在，则增加
         bucket.append((key, value))
 
 '删除字典中指定键的值'
@@ -84,5 +86,6 @@ def list(aMap):
     for bucket in aMap:
         if bucket:
             for k, v in bucket:
-                print(k, v)
+                # print(k, v)
+                print('\'', k, '\':', v)
 
