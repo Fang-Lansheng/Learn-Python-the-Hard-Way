@@ -12,7 +12,7 @@
 用list来创建一个字典数据结构hashmap
 '''
 
-def new(num_buckets=256):   # 即hashmap.new
+def new(num_buckets=256):   # 即hashmap.new()
     '''Initializes a Map with the given number of buckets'''
     '''用给定数目的bucket（存储空间）初始化一个Map（映射）。'''
     aMap = []   # aMap是一个list
@@ -29,8 +29,8 @@ def hash_key(aMap, key):    # 即hashmap.hash_key(key)
 
 def get_bucket(aMap, key):  # 即hashmap.get_bucket(key)
     '''Given a key, find the bucket where it would go.'''
-    '给定一个键值'
-    bucket_id = hash_key(aMap, key)
+    '给定一个键值，将作为其索引的哈希值存储在映射list:aMap中'
+    bucket_id = hash_key(aMap, key) # bucket_id是一个哈希值，作为键值对的索引
     return aMap[bucket_id]
 
 def get_slot(aMap, key, default=None):  # 即hashmap.get_slot(key, default=None)
@@ -40,9 +40,11 @@ def get_slot(aMap, key, default=None):  # 即hashmap.get_slot(key, default=None)
     '''
     bucket = get_bucket(aMap, key)
     for i, kv in enumerate(bucket):
+    # enumerate()函数用于将一个可遍历的数据对象组合为一个索引序列，同时列出数据和数据下标，一般用在for循环中
+    # i：index（索引）; kv：bucket中的元素，由key（键值，k）和value（键对应的值，v）（bucket是一个列表，也是aMap中的一个元素）
         k, v = kv
         if key == k:
-            return i, k, v
+            return i, k, v  # 返回index（索引），key（键），value（值）
 
     return -1, key, default
 
