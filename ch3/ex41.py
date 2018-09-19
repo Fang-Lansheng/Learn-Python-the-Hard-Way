@@ -70,8 +70,10 @@ def convert(snippet, phrase):
     param_names = []
 
     for i in range(0, snippet.count('@@@')):
-        param_count = random.randint(1, 3)
+        param_count = random.randint(1, 3)  # random.randint(1, 3)返回[1, 3]区间内数字（随机数）
         param_names.append(', '.join(random.sample(str(WORDS), param_count)))
+        # param_names是变量名的list
+        # random.sample()从WORDS中随机获取param_count个单词，这些单词以‘，’连接
 
     for sentence in snippet, phrase:
         result = sentence[:]    # 列表的分割切片语法[:]，得到列表从第一个到最后一个元素的切片
@@ -79,6 +81,7 @@ def convert(snippet, phrase):
         # fake class names
         for word in class_names:
             result = result.replace('%%%', str(word), 1)
+            # replace()，将字符串中的%%%用word替换，替换不超过1次
 
         # fake other names
         for word in other_names:
@@ -93,7 +96,9 @@ try:
     while True:
         # snippets = PHRASES.keys()
         snippets = list(PHRASES.keys())
+        # dict.keys返回一个迭代器，可用list()来转换为列表，包含字典中的所有键
         random.shuffle(snippets)
+        # random.shuffle()函数将序列中的所有元素随机排序
 
         for snippet in snippets:
             phrase = PHRASES[snippet]
