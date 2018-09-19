@@ -100,8 +100,8 @@ try:
         random.shuffle(snippets)
         # random.shuffle()函数将序列中的所有元素随机排序
 
-        for snippet in snippets:
-            phrase = PHRASES[snippet]
+        for snippet in snippets:    # 对于snippets中的每一个片段（对应字典PHRASES中的每一个键）
+            phrase = PHRASES[snippet]   # phrase是其该键对应的值
             question, answer = convert(snippet, phrase)
             if PHRASES_FIRST:
                 question, answer = answer, question
