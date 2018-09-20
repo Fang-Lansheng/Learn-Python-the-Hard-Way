@@ -10,7 +10,7 @@
 from nose.tools import *
 from ex47.game import Room
 
-def test_room():
+def test_room():    # Room(name, description)
     gold = Room('GoldRoom',
                 '''
                 This room has gold in it you can grab.
