@@ -112,6 +112,10 @@ class Scene(object):    # 基础类Scene（场景）
     def enter(self):
         print('This scene is not yet configured. Subclass it and implement enter().')
         exit(1)
+        '''
+        exit(0)表示正常退出
+        exit(1)表示非正常退出
+        '''
 
 class Engine(object):
     def __init__(self, scene_map):
@@ -185,7 +189,7 @@ class CentralCorridor(Scene):
             print('DOES NOT COMPUTE!')
             return 'central_corridor'
 
-
+# 第三个场景：LaserWeaponArmory
 class LaserWeaponArmory(Scene):
     def enter(self):
         print('You do a dive roll into the Weapon Armory, crouch and scan the room')
@@ -216,77 +220,132 @@ class LaserWeaponArmory(Scene):
             print('ship from their ship and you die.')
             return 'death'
 
+# 第四个场景：TheBridge
+class TheBridge(Scene):
+    def enter(self):
+        print('You burst onto the Bridge with the neutron destruct bomb')
+        print('under your arm and surprise 5 Gothons who are trying to')
+        print('take control of the ship. Each of them has an even uglier')
+        print('clown costume than the last. They haven\'t pulled their')
+        print('weapons out yet, as they see the active bomb under your')
+        print('arm and don\'t want to set it off.')
 
-    class TheBridge(Scene):
-        def enter(self):
-            print('You burst onto the Bridge with the neutron destruct bomb')
-            print('under your arm and surprise 5 Gothons who are trying to')
-            print('take control of the ship. Each of them has an even uglier')
-            print('clown costume than the last. They haven\'t pulled their')
-            print('weapons out yet, as they see the active bomb under your')
-            print('arm and don\'t want to set it off.')
+        action = input('> ')
 
-            action = input('> ')
+        if action == 'throw the bomb':
+            print('In a panic you throw the bomb at the group of Gothons')
+            print('and make a leap for the door. Right as you drop it a')
+            print('Gothon shoots you right in the back killing you.')
+            print('As you die you see another Gothon frantically try to disarm')
+            print('the bomb. You die knowing they will probably blow up when')
+            print('it goes off.')
+            return 'death'
 
-            if action == 'throw the bomb':
-                print('In a panic you throw the bomb at the group of Gothons')
-                print('and make a leap for the door. Right as you drop it a')
-                print('Gothon shoots you right in the back killing you.')
-                print('As you die you see another Gothon frantically try to disarm')
-                print('the bomb. You die knowing they will probably blow up when')
-                print('it goes off.')
-                return 'death'
+        elif action == 'slowly place the bomb':
+            print('You point your blaster at the bomb under your arm')
+            print('and the Gothons put their hands up and start to sweat.')
+            print('You inch backward to the floor, point your blaster at it.')
+            print('You then jump back through the door, punch the close button')
+            print('and blast the lock so the Gothons can\' t get out.')
+            print('Now that the bomb is placed you run to the escape pod to')
+            print('get off this tin can.')
+            return 'escape_pod'
 
-            elif action == 'slowly place the bomb':
-                print('You point your blaster at the bomb under your arm')
-                print('and the Gothons put their hands up and start to sweat.')
-                print('You inch backward to the floor, point your blaster at it.')
-                print('You then jump back through the door, punch the close button')
-                print('and blast the lock so the Gothons can\' t get out.')
-                print('Now that the bomb is placed you run to the escape pod to')
-                print('get off this tin can.')
-                return 'escape_pod'
-            else:
-                print('DOES NOT COMPUTE!')
-                return 'the_bridge'
+        else:
+            print('DOES NOT COMPUTE!')
+            return 'the_bridge'
 
-    class EscapePod(Scene):
-        def enter(self):
-            print('You rush through the ship desperately trying to make it to')
-            print('the escape pod before the whole ship explodes. It seems like')
-            print('hardly and Gothons are on the ship, so your run is clear of')
-            print('interference. You get to the chamber with the escape pods, and')
-            print('now need to pick one to take. Some of them could be damaged')
-            print('but you don\'t have time to look. There\'s 5 pods, which one')
-            print('do you take?')
+# 第五个场景：EscapePod
+class EscapePod(Scene):
+    def enter(self):
+        print('You rush through the ship desperately trying to make it to')
+        print('the escape pod before the whole ship explodes. It seems like')
+        print('hardly and Gothons are on the ship, so your run is clear of')
+        print('interference. You get to the chamber with the escape pods, and')
+        print('now need to pick one to take. Some of them could be damaged')
+        print('but you don\'t have time to look. There\'s 5 pods, which one')
+        print('do you take?')
 
-            good_pod = randint(1, 5)
-            guess = input('[pod #]> ')
+        good_pod = randint(1, 5)
+        guess = input('[pod #]> ')
 
-            if int(guess) != good_pod:
-                print('You jump into pod %s and hit the eject button.' % guess)
-                print('The pod escapes out into the void of space, then')
-                print('implodes as the hull ruptures, crushing your body')
-                print('into jam jelly.')
-                return 'death'
-            else:
-                print('You jump into pod %s and hit the eject button.' % guess)
-                print('The pod easily slides out into space heading to')
-                print('the planet below. As it flies to the planet, you look')
-                print('back and see your ship implode then explode like a')
-                print('bright star, taking out the Gothon ship at the same')
-                print('time. You won!')
-                return 'finished'
-
-
-    class Finished(Scene):
-        def enter(self):
-            print('You won! Good job.')
+        if int(guess) != good_pod:
+            print('You jump into pod %s and hit the eject button.' % guess)
+            print('The pod escapes out into the void of space, then')
+            print('implodes as the hull ruptures, crushing your body')
+            print('into jam jelly.')
+            return 'death'
+        else:
+            print('You jump into pod %s and hit the eject button.' % guess)
+            print('The pod easily slides out into space heading to')
+            print('the planet below. As it flies to the planet, you look')
+            print('back and see your ship implode then explode like a')
+            print('bright star, taking out the Gothon ship at the same')
+            print('time. You won!')
             return 'finished'
 
+# 第六个场景：Finished
+class Finished(Scene):
+    def enter(self):
+        print('You won! Good job.')
+        return 'finished'
 
 
+class Map(object):
+    # 将所有的场景存储在名为scenes的字典中
+    scenes = {
+        'central_corridor': CentralCorridor(),
+        'laser_weapon_armory': LaserWeaponArmory(),
+        'the_bridge': TheBridge(),
+        'escape_pod': EscapePod(),
+        'death': Death(),
+        'finished': Finished()
+    }
 
+    def __init__(self, start_scene):
+        self.start_scene = start_scene
+
+    def next_scene(self, scene_name):
+        val = Map.scenes.get(scene_name)
+        return val
+
+    def opening_scene(self):
+        return self.next_scene(self.start_scene)
+
+# 启动游戏
+a_map = Map('central_corridor') # central_corridor即为start_scene
+a_game = Engine(a_map)  # a_map即为scene_map
+a_game.play()
+'''
+执行play()
+current_scene = a_map.opening_scene()
+--> 其中opening_scene()返回next_scene(start_scene)，即返回next_scene('central_corridor')
+--> 故current_scene = a_map.next_scene('central_corridor')
+--> 从而返回a_map.scenes.get('central_corridor')，即Central_Corridor()
+--> 因此，current_scene当前为Central_Corridor()
+
+last_scene = a_map.next_scene('finished') # 场景'finished'为最后一个场景
+--> a_map.next_scene('finished')返回a_map.scenes.get('finished')，即返回Finished()
+--> 因此，last_scene即为Finished()
+while current_scene != last_scene: # 当current_scene ≠ last_scene，即场景未结束时：
+
+    next_scene_name = current_scene.enter()
+    --> current_scene.enter()即为Central_Corridor.enter()，开始进行场景一
+    --> 当场景通过失败时，返回'death'
+    --> 当场景通过成功时，返回下一场景（此时为'laser_weapon_armory'）
+    
+    current_scene = self.scene_map.next_scene(next_scene_name)
+    --> 当场景通过失败时，current_scene = a_map.next_scene('death')，即返回Death()
+    --> 当场景通过成功时，current_scene = a_map.next_scene('laser_weapon_armory')，即返回LaserWeaponArmory()
+
+current_scene.enter()
+--> 当场景通过失败时，执行Death.enter()，游戏结束，退出（exit(1)）
+--> 当场景通过成功时，执行LaserWeaponArmory.enter()，游戏继续下一场景
+
+--> 接下来进行下次循环
+--> ...
+--> 直到游戏失败或者执行Finished.enter()    
+'''
 
 
 
